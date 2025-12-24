@@ -1,0 +1,85 @@
+.rs{
+    color: white;
+    background: #001030;
+    position: relative;
+    height: 75vh;
+    overflow-y: scroll;
+}
+.rs-profile{
+    padding-top: 60px;
+    text-align: center;
+    margin: auto;
+    max-width: 70%;
+
+}
+.rs-profile img{
+    width: 118px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.rs-profile h3{
+    font-size: 17px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 5px 0px;
+}
+.rs-profile p{
+    font-size: 10px;
+    opacity: 84%;
+    font-weight: 300;
+}
+.rs hr{
+    border-color: #ffffff62;
+    margin: 15px 0px;
+}
+.rs-media{
+    padding: 0px 20px;
+    font-size: 12px;
+
+}
+.rs-media div{
+    max-height: 150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow-y: scroll;
+    gap: 5px;
+    margin-top: 7px;
+}
+.rs-media div img{
+    width: 60px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.rs button{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(104, 104, 238);
+    font-size: 12px;
+    font-weight: 340;
+    border: none;
+    padding: 10px 60px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.rs button:hover {
+    background: rgb(82, 82, 230);    
+    transform: translateX(-50%) scale(1.05);  
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);  
+}
+
+.rs-media div img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 900px) {
+    .rs{
+        display: none;
+    }
+}
