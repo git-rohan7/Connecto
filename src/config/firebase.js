@@ -20,12 +20,12 @@ import {
 import { toast } from "react-toastify";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBoWpxAl3jBKCBEvl2_hPNGYS-ANwNzHUU",
-  authDomain: "chat-app-d012f.firebaseapp.com",
-  projectId: "chat-app-d012f",
-  storageBucket: "chat-app-d012f.firebasestorage.app",
-  messagingSenderId: "455104652684",
-  appId: "1:455104652684:web:7ed877386f8f47442ce2a9",
+  apiKey: ,
+  authDomain: ,
+  projectId: ,
+  storageBucket: 
+  messagingSenderId: 
+  appId: ,
 };
 
 const app = initializeApp(firebaseConfig);
