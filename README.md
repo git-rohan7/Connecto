@@ -1,134 +1,199 @@
-Connecto — Real-Time Chat Application
+# Connecto — Real‑Time Chat Application
 
-Connecto is a modern real-time chat application built using React, Vite, and Firebase.
-It provides user authentication, real-time messaging, online presence indicators, and a responsive UI.
+Make real‑time conversations delightful. Connecto is a modern, lightweight chat app built with React + Vite and powered by Firebase for auth and realtime data. It includes authentication, one‑to‑one messaging, online presence, and a responsive UI so you can focus on features — not plumbing.
 
-🚀 Features
+[![Built with React](https://img.shields.io/badge/react-19-blue?logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/vite-fast-brightgreen?logo=vite)]
+[![Firebase](https://img.shields.io/badge/firebase-realtime-yellow?logo=firebase)]
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-User authentication (Firebase Auth)
+---
 
-Real-time chat using Firestore
+Table of contents
+- [Highlights](#highlights)
+- [Demo](#demo)
+- [Quick start](#quick-start)
+- [Firebase configuration](#firebase-configuration)
+- [Project structure](#project-structure)
+- [Tech stack](#tech-stack)
+- [Security](#security)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Author](#author)
+- [License](#license)
 
-Online/offline status tracking
+---
 
-One-to-one messaging
+## Highlights
 
-Message timestamps and delivery
+- Fast, modern frontend: React 19 + Vite
+- Auth with Firebase Authentication (email / social providers)
+- Real‑time messaging using Firestore
+- Online / offline presence indicators
+- One‑to‑one conversations with timestamps & delivery status
+- Protected routes and toast notifications (React Toastify)
+- Responsive, mobile-first UI and modular architecture
 
-Responsive UI
+---
 
-Toast notifications
+## Demo
 
-Protected routes
+Add a short GIF or screenshot here to show the chat experience:
 
-Modern React 19 architecture
+![Connecto demo placeholder](docs/demo.gif)
 
-🛠️ Tech Stack
-Layer	Technology
-Frontend	React 19 + Vite
-Routing	React Router DOM
-Backend	Firebase
-Database	Firestore
-Auth	Firebase Authentication
-Notifications	React Toastify
-Linting	ESLint
-📁 Project Structure
-src/
-│
-├── components/      # Reusable UI components
-├── pages/           # Application pages (Login, Chat, Profile etc.)
-├── config/          # Firebase configuration
-├── context/         # React Context (AppContext)
-├── lib/             # Helper functions (uploads, utilities)
-├── assets/          # Images and static assets
-│
-├── App.jsx
-├── main.jsx
-└── index.css
+Live demo (if available): https://your-demo-url.example
 
-⚙️ Installation
-1️⃣ Clone the repository
-git clone https://github.com/your-username/connecto.git
-cd connecto
+---
 
-2️⃣ Install dependencies
+## Quick start
+
+Requirements
+- Node.js (recommended >= 18)
+- npm or yarn
+- A Firebase project
+
+Clone and install
+```bash
+git clone https://github.com/git-rohan7/Connecto.git
+cd Connecto
 npm install
+```
 
-3️⃣ Configure Firebase
+Run (development)
+```bash
+npm run dev
+# open http://localhost:5173
+```
 
-Create a .env file in the root:
+Build and preview
+```bash
+npm run build
+npm run preview
+```
 
+Test
+```bash
+npm test
+# or
+npm run lint
+```
+
+---
+
+## Firebase configuration
+
+Create a Firebase project and enable Firestore + Authentication.
+
+Create a `.env` file in the project root with the following keys (Vite prefix `VITE_` required):
+
+```env
 VITE_FIREBASE_API_KEY=your_api_key
 VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
 VITE_FIREBASE_PROJECT_ID=your_project_id
 VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
 VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 VITE_FIREBASE_APP_ID=your_app_id
+```
 
+Update `src/config/firebase.js` (or `.ts`) to read these environment variables. Example:
+```js
+// src/config/firebase.js
+import { initializeApp } from 'firebase/app';
 
-Update src/config/firebase.js to use environment variables.
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
 
-▶️ Running the Project
-npm run dev
+export const app = initializeApp(firebaseConfig);
+```
 
+Firestore security: use rules to restrict reads/writes to authenticated users and to enforce per‑room/per‑conversation access.
 
-Open: http://localhost:5173
+---
 
-🏗️ Build for Production
-npm run build
+## Project structure
 
+src/
+├── assets/          # images and static assets  
+├── components/      # reusable UI components (Message, Avatar, Input, etc.)  
+├── pages/           # app pages (Login, Chat, Profile)  
+├── config/          # firebase config and environment helpers  
+├── context/         # React Context (AppContext, AuthContext)  
+├── lib/             # utilities (uploads, helpers)  
+├── hooks/           # custom hooks (useAuth, useMessages)  
+├── styles/          # global and component styles  
+├── App.jsx  
+├── main.jsx  
 
-Preview build:
+(Adjust if you use TypeScript — e.g. `.tsx` / `.ts` files.)
 
-npm run preview
+---
 
-🔐 Security
+## Tech stack
 
-Firestore security rules should restrict reads/writes to authenticated users only.
+- Frontend: React 19 + Vite  
+- Routing: react-router-dom  
+- Backend / Realtime: Firebase (Firestore)  
+- Auth: Firebase Authentication  
+- Notifications: react-toastify  
+- Linting: ESLint  
+- (Optional) Storage: Firebase Storage for media
 
-Do not expose Firebase credentials in public repositories.
+---
 
-Use .env for secrets.
+## Security
 
-📦 Dependencies
+- Keep Firebase keys in `.env` — never commit secrets.
+- Configure Firestore security rules to validate authenticated access and enforce ownership.
+- Sanitize user inputs where appropriate (file uploads, display names).
+- Use Firebase rules/Cloud Functions to prevent unauthorized reads/writes.
 
-Main dependencies:
+---
 
-react
+## Roadmap (planned features)
 
-firebase
+- Group chat / channels
+- Typing indicators & read receipts
+- Media / file sharing with previews
+- Message reactions & threads
+- User blocking / reporting and moderation tools
+- End‑to‑end encryption option (advanced)
 
-react-router-dom
+Have a feature request? Open an issue or start a discussion.
 
-react-toastify
+---
 
-🧩 Future Improvements
+## Contributing
 
-Group chats
+Contributions welcome! A suggested workflow:
+1. Fork the repo and create a branch: `feature/your-idea`
+2. Run tests and linters locally
+3. Open a PR with a clear description and screenshots if UI changes
 
-Typing indicators
+See CONTRIBUTING.md for contribution guidelines and code of conduct.
 
-Read receipts
+---
 
-Media/file sharing
+## Author
 
-Message reactions
+Rohan Kumar  
+GitHub: [git-rohan7](https://github.com/git-rohan7)
 
-User blocking/reporting
+---
 
-🧑‍💻 Author
+## License
 
-Rohan Kumar
-B.Tech CSE (Data Science) — UEM Kolkata
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
-📜 License
+---
 
-This project is licensed under the MIT License.
-
-✔️ Notes
-
-Built with scalability and modularity in mind.
-
-Optimized for modern browsers.
-
-Uses React Context for state management.
+Notes
+- Built with modularity and scalability in mind.
+- Optimized for modern browsers and mobile form factors.
+- Uses React Context for lightweight state management; swap in Redux / Zustand if needed.
