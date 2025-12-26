@@ -21,6 +21,8 @@ Toast notifications
 
 Protected routes
 
+Modern React 19 architecture
+
 🛠️ Tech Stack
 Layer	Technology
 Frontend	React 19 + Vite
@@ -29,60 +31,76 @@ Backend	Firebase
 Database	Firestore
 Auth	Firebase Authentication
 Notifications	React Toastify
+Linting	ESLint
+📁 Project Structure
+src/
+│
+├── components/      # Reusable UI components
+├── pages/           # Application pages (Login, Chat, Profile etc.)
+├── config/          # Firebase configuration
+├── context/         # React Context (AppContext)
+├── lib/             # Helper functions (uploads, utilities)
+├── assets/          # Images and static assets
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+
 ⚙️ Installation
+1️⃣ Clone the repository
 git clone https://github.com/your-username/connecto.git
 cd connecto
+
+2️⃣ Install dependencies
 npm install
 
+3️⃣ Configure Firebase
 
-Create .env:
+Create a .env file in the root:
 
-VITE_FIREBASE_API_KEY=...
-VITE_FIREBASE_AUTH_DOMAIN=...
-VITE_FIREBASE_PROJECT_ID=...
-VITE_FIREBASE_STORAGE_BUCKET=...
-VITE_FIREBASE_MESSAGING_SENDER_ID=...
-VITE_FIREBASE_APP_ID=...
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
 
-▶️ Running Locally
+
+Update src/config/firebase.js to use environment variables.
+
+▶️ Running the Project
 npm run dev
 
 
 Open: http://localhost:5173
 
-🌍 Deploy to GitHub Pages
-1️⃣ Install gh-pages
-npm install gh-pages --save-dev
-
-2️⃣ Update vite.config.js
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-export default defineConfig({
-  plugins: [react()],
-  base: '/connecto/'
-})
-
-3️⃣ Update package.json
-"homepage": "https://your-username.github.io/connecto",
-"scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-}
-
-4️⃣ Deploy
-npm run deploy
+🏗️ Build for Production
+npm run build
 
 
-Your app will be live at:
+Preview build:
 
-https://your-username.github.io/connecto
+npm run preview
 
 🔐 Security
 
-Restrict Firestore reads/writes to authenticated users
+Firestore security rules should restrict reads/writes to authenticated users only.
 
-Never commit .env files
+Do not expose Firebase credentials in public repositories.
+
+Use .env for secrets.
+
+📦 Dependencies
+
+Main dependencies:
+
+react
+
+firebase
+
+react-router-dom
+
+react-toastify
 
 🧩 Future Improvements
 
@@ -92,7 +110,11 @@ Typing indicators
 
 Read receipts
 
-Media sharing
+Media/file sharing
+
+Message reactions
+
+User blocking/reporting
 
 🧑‍💻 Author
 
@@ -101,4 +123,12 @@ B.Tech CSE (Data Science) — UEM Kolkata
 
 📜 License
 
-MIT License
+This project is licensed under the MIT License.
+
+✔️ Notes
+
+Built with scalability and modularity in mind.
+
+Optimized for modern browsers.
+
+Uses React Context for state management.
